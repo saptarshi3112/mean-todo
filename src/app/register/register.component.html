@@ -1,0 +1,43 @@
+<mat-toolbar color="primary">
+  <span>Registration</span>
+</mat-toolbar>
+<mat-card class="my-card">
+  <mat-card-content>
+    <div *ngIf="messages">
+      <div style="font-size: 16px;" class="alert alert-danger"> {{ messages.message }} </div>
+    </div>
+    <div *ngIf="success">
+      <div style="font-size: 16px;" class="alert alert-success"> {{ success.success }} 
+        <a routerLink="/sign-in-user">Redirect to Login</a>
+      </div>  
+    </div>
+    <form class="my-form">
+      <mat-form-field class="full-width">
+        <mat-label>First Name</mat-label>
+        <input [(ngModel)]="fname" type="text"  matInput  placeholder="First name"  name="fname"  required>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>Last Name</mat-label>
+        <input [(ngModel)]="lname" type="text" matInput  placeholder="Last Name" name="lname"  required>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>User Name</mat-label>
+        <input [(ngModel)]="uname" type="text" matInput  placeholder="Username" name="uname" required>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input type="password" [(ngModel)]="password" matInput placeholder="Password" name="password" required>
+      </mat-form-field>
+      <mat-form-field style="font-size: 16px;">
+        <input [(ngModel)]="dob" name="dob" matInput [matDatepicker]="picker" placeholder="Date of Birth" required>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <button (click)="registerButtonClick()" class="button-mat" mat-raised-button color="primary">Create New User</button>
+    </form>
+    <br>
+    <div style="font-size: 16px;">
+      <span>Already an User ?</span> &nbsp;&nbsp;&nbsp;<a style="text-decoration: none; color: black;" mat-raised-button  routerLink="/sign-in-user">Sign In Here</a>
+    </div>
+    <br><br>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,27 @@
+<mat-toolbar color="accent">
+  <span>Add New TODO</span>
+</mat-toolbar>
+<mat-card class="my-card">
+  <mat-card-content>
+    <div *ngIf="messages">
+      <div class="alert alert-danger">
+        {{ messages.message }}
+      </div>
+    </div>
+    <div *ngIf="success">
+      <div class="alert alert-success">
+        {{ success.success }}
+      </div>
+    </div>
+    <br><br>
+    <form class="my-form">
+      <mat-form-field class="full-width">
+        <mat-label>Enter Title</mat-label>
+        <input type="text" matInput  [(ngModel)]="title" placeholder="Title" name="title" required>
+      </mat-form-field>
+      <button (click)="createTodo()" class="button-mat" mat-raised-button color="accent">
+        Create New Todo
+      </button>
+    </form>
+  </mat-card-content>
+</mat-card>

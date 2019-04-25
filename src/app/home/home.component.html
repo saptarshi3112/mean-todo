@@ -1,0 +1,48 @@
+<div class="row">
+	<div class="container">
+		<div>
+			<input [(ngModel)]="searchBar" (keyup)="typingBar()" name="searchBar" type="text" class="form-control">
+		</div>
+		<div class="text-left">
+			<button (click)="showAll()" mat-raised-button color="accent">Show All</button>
+		</div>
+		<div style="height: 50rem; overflow-y: scroll; overflow-x: hidden;">
+			<div class="row" style="overflow-x: hidden;">
+				<div class="col-lg-4" *ngFor="let todo of todos" style="overflow-x: hidden;">
+					<br>
+					<mat-card class="text-center">
+					  <mat-card-header>
+					  	<div>
+						    <mat-card-title>
+						    	<span *ngIf="todo.done"><i class="far fa-2x fa-check-circle text-success"></i></span> 
+						    </mat-card-title>
+					  	</div>
+					  </mat-card-header>
+					  <mat-card-content>
+					  	<div class="text-center" [ngClass]="{'border-success': todo.done}" style="font-size: 18px;">
+					  		<span>{{ todo.title }}</span>
+					  	</div>
+					    started on: <strong> {{ todo.start | date: 'dd/MM/yyyy' }} </strong>
+					  </mat-card-content>
+					  <mat-card-actions>
+					  	<div class="row">
+					  		<div class="col-lg-6">
+					  			<div *ngIf="!todo.done">
+							  		<button (click)="doneTodo(todo._id)" style="background-color: green;" mat-button>
+							    		<i class="fas fa-check-circle text-light"></i>
+							    	</button>
+							  	</div>
+					  		</div>
+					  		<div class="col-lg-6" [ngClass]="{'col-lg-12': todo.done}">
+					  			<button (click)="deleteTodo(todo._id)" color="warn" mat-raised-button>
+					  				<i class="fas fa-trash-alt"></i>
+					  			</button>
+					  		</div>
+			  			</div>
+					  </mat-card-actions>
+					</mat-card>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

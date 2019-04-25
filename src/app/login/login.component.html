@@ -1,0 +1,27 @@
+<mat-toolbar color="primary">
+  <span>Login</span>
+</mat-toolbar>
+<mat-card class="my-card">
+  <mat-card-content>
+    <div *ngIf="messages">
+      <div class="alert alert-danger">
+        {{ messages.message }}
+      </div>
+    </div>
+    <form class="my-form">
+      <mat-form-field class="full-width">
+        <mat-label>User Name</mat-label>
+        <input type="text" matInput  [(ngModel)]="username" placeholder="Username" name="username" required>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input type="password" matInput [(ngModel)]="password" placeholder="Password" name="password" required>
+      </mat-form-field>
+      <button (click)="loginButtonClick()" class="button-mat" mat-raised-button color="primary">Sign In User</button>
+    </form>
+    <br>
+    <div style="font-size: 16px;">
+      <span>Not an User ?</span> &nbsp;&nbsp;&nbsp;<a style="text-decoration: none; color: black;" mat-raised-button  routerLink="/sign-up-user">Sign Up Here</a>
+    </div>
+    <br><br>
+  </mat-card-content>
+</mat-card>

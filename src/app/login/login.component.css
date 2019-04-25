@@ -1,0 +1,17 @@
+.my-form{
+  width: 100%;
+}
+
+.my-card {
+  padding: 20px 60px 0 60px;
+}
+ 
+.full-width {
+  width: 100%;
+  font-size: 16px;
+}
+
+.button-mat {
+  width: 100%;
+  font-size: 18px;
+}
