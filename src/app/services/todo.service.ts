@@ -35,4 +35,12 @@ export class TodoService {
 		.pipe( map( (res:any)=>res ) );
 	}
 
+	getDone(id: String) {
+		return this.http.post(`${this.url}/get-done/`, { uid: id }).pipe( map( (res:any)=>res ) );
+	}
+
+	getNotDone(id: String) {
+		return this.http.post(`${this.url}/get-not-done/`, { uid: id }).pipe( map( (res:any)=>res ) );
+	}
+
 }

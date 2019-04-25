@@ -5,8 +5,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { MatBadgeModule, MatTooltipModule, 
-  MatSliderModule, MatIconModule, MatInputModule, 
-  MatFormFieldModule, MatButtonModule, MatNativeDateModule, MatCardModule, MatSelectModule } from '@angular/material';
+          MatSliderModule, MatIconModule, MatInputModule, 
+          MatFormFieldModule, MatButtonModule, 
+          MatNativeDateModule, 
+          MatCardModule, MatSelectModule } from '@angular/material';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';

@@ -11,8 +11,24 @@
 				type="text">
 			</mat-form-field>
 		</div>
-		<div class="text-left">
-			<button (click)="showAll()" mat-raised-button color="accent">Show All</button>
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="text-left">
+					<button (click)="showAll()" mat-raised-button color="accent">Show All</button>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="text-right">
+						<form>
+							<select [(ngModel)]="sorter" name="sorter" class="form-control">
+								<option value="Done">Done</option>
+								<option value="NotDone">Not Done</option>
+							</select>
+							&nbsp;&nbsp;
+							<button (click)="sortBy()" class="btn btn-sm btn-danger">Sort by Done or undone</button>
+						</form>
+				</div>
+			</div>
 		</div>
 		<div style="height: 45rem; overflow-y: scroll; overflow-x: hidden;">
 			<div class="row" style="overflow-x: hidden;">
@@ -33,15 +49,15 @@
 					    started on: <strong> {{ todo.start | date: 'dd/MM/yyyy' }} </strong>
 					  </mat-card-content>
 					  <mat-card-actions>
-					  	<div class="row">
-					  		<div class="col-lg-6">
-					  			<div *ngIf="!todo.done">
+					  	<div class="row justify-content-center">
+					  		<div *ngIf="!todo.done">
+					  			<div class="col-lg-4">
 							  		<button (click)="doneTodo(todo._id)" style="background-color: green;" mat-button>
 							    		<i class="fas fa-check-circle text-light"></i>
 							    	</button>
 							  	</div>
 					  		</div>
-					  		<div class="col-lg-6" [ngClass]="{'col-lg-12': todo.done}">
+					  		<div class="col-lg-4" [ngClass]="{'col-lg-12': todo.done}">
 					  			<button (click)="deleteTodo(todo._id)" color="warn" mat-raised-button>
 					  				<i class="fas fa-trash-alt"></i>
 					  			</button>

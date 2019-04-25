@@ -23,7 +23,6 @@ export class HomeComponent implements OnInit {
   	if(token === null) {
   		this.router.navigate(['sign-in-user']);
   	} else {
-      let sorter = ['Done', 'Not Done'];
   		this.User = jwt_decode(token);
       this.todo.getAllTodos(this.User.user._id).subscribe( (res:any) => {
         if(res.todos) {
@@ -73,6 +72,26 @@ export class HomeComponent implements OnInit {
           this.todos = res.todo;
         }
       });
+    }
+  }
+
+  sortBy() {
+    if(this.sorter !== undefined) {
+      if(this.sorter === 'Done') {
+        this.todo.getDone(this.User.user._id)
+        .subscribe((res:any) => {
+        if(res.todo) {
+          this.todos = res.todo;
+        }
+      });;
+      } if(this.sorter === 'NotDone') {
+        this.todo.getNotDone(this.User.user._id)
+        .subscribe((res:any) => {
+        if(res.todo) {
+          this.todos = res.todo;
+        }
+      });;
+      }
     }
   }
 }

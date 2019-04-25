@@ -92,4 +92,22 @@ router.post('/type-todo/', (req, res) => {
 	}
 });
 
+router.post('/get-done/', (req, res) => {
+	Todo.find({ done: true, creator: req.body.uid }, (err, todo) => {
+		if(err) { res.json({ message: err }); }
+		else {
+			res.json({ todo: todo });
+		}
+	});
+});
+
+router.post('/get-not-done/', (req, res)=> {
+	Todo.find({ done: false, creator: req.body.uid }, (err, todo) => {
+		if(err) { res.json({ message: err }); }
+		else {
+			res.json({ todo: todo });
+		}
+	});
+})
+
 module.exports = router;
