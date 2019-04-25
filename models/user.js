@@ -15,6 +15,10 @@ const userSchema = new schema({
     required :true,
     unique: true
   },
+  tasksDone: {
+    type: Number,
+    default: 0
+  },
   password: {
     type: String,
     required: true

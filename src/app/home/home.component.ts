@@ -11,18 +11,19 @@ import * as jwt_decode from 'jwt-decode';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private auth:AuthService, private router:Router, private todo:TodoService)
-  { }
+  constructor(private auth:AuthService, private router:Router, private todo:TodoService){}
 
   User: any;
   todos: any;
   searchBar: String;
+  sorter: String;
 
   ngOnInit() {
   	const token = this.auth.isLoggedIn();
   	if(token === null) {
   		this.router.navigate(['sign-in-user']);
   	} else {
+      let sorter = ['Done', 'Not Done'];
   		this.User = jwt_decode(token);
       this.todo.getAllTodos(this.User.user._id).subscribe( (res:any) => {
         if(res.todos) {
@@ -55,7 +56,8 @@ export class HomeComponent implements OnInit {
   }
 
   showAll() {
-    this.todo.getAllTodos(this.User.user._id).subscribe( (res:any) => {
+    this.todo.getAllTodos(this.User.user._id)
+    .subscribe( (res:any) => {
       if(res.todos) {
         this.todos = res.todos;
         this.searchBar = '';
@@ -65,13 +67,12 @@ export class HomeComponent implements OnInit {
 
   typingBar() {
     if(this.searchBar !== '' || this.searchBar !== undefined) {
-      this.todo.searchKeyTodo(this.User._id, this.searchBar).subscribe((res:any) => {
+      this.todo.searchKeyTodo(this.User.user._id, this.searchBar)
+      .subscribe((res:any) => {
         if(res.todo) {
           this.todos = res.todo;
         }
       });
-    } else if(this.searchBar === '' || this.searchBar === undefined) {
-      this.todos = null;
     }
   }
 }

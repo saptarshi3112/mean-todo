@@ -64,4 +64,15 @@ router.post('/sign-in-user/', (req, res) => {
   })
 });
 
+router.post('/get-user-details/', (req, res)=> {
+	User.findById(req.body.id, (err, user) => {
+		if(err) { res.json({ err: message }); } 
+		else {
+			res.json({ 
+				user: user 
+			});
+		}
+	});
+});
+
 module.exports = router;

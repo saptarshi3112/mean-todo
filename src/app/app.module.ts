@@ -6,7 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { MatBadgeModule, MatTooltipModule, 
   MatSliderModule, MatIconModule, MatInputModule, 
-  MatFormFieldModule, MatButtonModule, MatNativeDateModule, MatCardModule } from '@angular/material';
+  MatFormFieldModule, MatButtonModule, MatNativeDateModule, MatCardModule, MatSelectModule } from '@angular/material';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
@@ -19,12 +19,14 @@ import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AddComponent } from './add/add.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes:Routes=[
   { path: '', component: HomeComponent },
   { path: 'sign-in-user', component: LoginComponent },
   { path: 'sign-up-user', component: RegisterComponent },
-  { path: 'add-todo', component: AddComponent }
+  { path: 'add-todo', component: AddComponent },
+  { path: 'user-profile', component: ProfileComponent }
 ];
 
 @NgModule({
@@ -34,7 +36,8 @@ const routes:Routes=[
     RegisterComponent,
     HomeComponent,
     NavbarComponent,
-    AddComponent
+    AddComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +50,7 @@ const routes:Routes=[
     MatSliderModule, MatIconModule, MatInputModule, 
     MatFormFieldModule, MatButtonModule, MatNativeDateModule,
     MatToolbarModule, MatDatepickerModule, MatMenuModule,
-    MatButtonToggleModule, MatCardModule
+    MatButtonToggleModule, MatCardModule, MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

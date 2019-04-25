@@ -20,6 +20,11 @@ export class AuthService {
   		return null;
   	}
   }
+
+  getUserDetails(id:String) {
+    return this.http.post(`${this.url}/get-user-details/`, {id: id})
+    .pipe((map((res:any)=>(res))));
+  }
   
   registerAuthTrigger(user:Object) {
   	return this.http.post(`${this.url}/sign-up-user/`, user)

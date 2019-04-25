@@ -1,0 +1,35 @@
+<div class="container" style="padding-top: 4%;">
+	<div class="row">
+		<div class="col-lg-12">
+			<mat-card class="example-card">
+			  <mat-card-header>
+			    <div mat-card-avatar class="example-header-image"></div>
+			    <mat-card-title>
+			    	<strong>TODO User</strong>
+			    </mat-card-title>
+			  </mat-card-header>
+			  <br><br>
+			  <mat-card-content>
+			    	<div  style="font-size: 16px;" class="container">
+			    		<div *ngIf="User" class="row">
+			    			<div class="col-lg-6">
+			    				<strong>User Name</strong> : {{ User.user.username | titlecase  }}
+						    	<br><br>
+						    	<strong>First Name</strong> : {{ User.user.firstname | titlecase }}
+						    	&nbsp;&nbsp;
+						    	<strong>Last Name</strong> : {{ User.user.lastname | titlecase }}
+						    	<br><br>
+									<strong>Date of Birth</strong> : {{ User.user.dob | date: 'dd/MM/yyyy' }}
+									<br><br>
+						    	<strong>Joined on</strong> : {{ User.user.dateJoined | date: 'dd/MM/yyyy' }}
+			    			</div>
+			    			<div class="col-lg-6">
+			    				<strong>Tasks Done: </strong> {{ User.user.tasksDone }}
+			    			</div>
+			    		</div>
+			    	</div>
+			  </mat-card-content>
+			</mat-card>
+		</div>
+	</div>
+</div>

@@ -1,12 +1,20 @@
 <div class="row">
 	<div class="container">
 		<div>
-			<input [(ngModel)]="searchBar" (keyup)="typingBar()" name="searchBar" type="text" class="form-control">
+			<mat-form-field class="full-width">
+				<input 
+				color="accent" 
+				placeholder="Type Name Here" 
+				matInput [(ngModel)]="searchBar" 
+				(keyup)="typingBar()" 
+				name="searchBar" 
+				type="text">
+			</mat-form-field>
 		</div>
 		<div class="text-left">
 			<button (click)="showAll()" mat-raised-button color="accent">Show All</button>
 		</div>
-		<div style="height: 50rem; overflow-y: scroll; overflow-x: hidden;">
+		<div style="height: 45rem; overflow-y: scroll; overflow-x: hidden;">
 			<div class="row" style="overflow-x: hidden;">
 				<div class="col-lg-4" *ngFor="let todo of todos" style="overflow-x: hidden;">
 					<br>

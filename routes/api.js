@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
-const Todo = require('../models/todo')
+const Todo = require('../models/todo');
+const User = require('../models/user');
 
 router.post('/get-all-todo/', (req, res) => {
 	Todo.find({ creator: req.body.uid }, (err, todos) => {
@@ -52,6 +53,18 @@ router.post('/done-todo/', (req, res) => {
 				res.json({ message: err });
 			} else {
 				todo.done = true;
+				User.findById(req.body.uid, (err, user) => {
+					if(err) {
+						res.json({ message: err });
+					} else {
+						user.tasksDone += 1;
+						user.save((err) => {
+							if(err) {
+								res.json({message: err});
+							}
+						});
+					}
+				});
 				todo.save((err) => {
 					if(err) {
 						res.json({ message: err });
@@ -65,7 +78,7 @@ router.post('/done-todo/', (req, res) => {
 
 router.post('/type-todo/', (req, res) => {
 	if(req.body.todo !== '') {
-		Todo.find({ title: {"$regex": `${req.body.todo}`} }, (err, todo) => {
+		Todo.find({ title: {"$regex": `${req.body.todo}`}, creator: req.body.uid }, (err, todo) => {
 			if(err) {
 				res.json({
 					message: err
