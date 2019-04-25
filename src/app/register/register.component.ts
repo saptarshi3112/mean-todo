@@ -40,8 +40,10 @@ export class RegisterComponent implements OnInit {
       };
       this.auth.registerAuthTrigger(user).subscribe((res:any) => {
         if(res.message) {
+          this.success=null;
           this.messages = res;
         } if(res.success) {
+          this.messages=null;
           this.success = res;
         }
       });
