@@ -30,11 +30,3 @@ Technologies Used:
   Font Awesome library for icons
   Jwt-decode library to decode jsonwebtoken.
 
-ACCOUNT CREATED: 
-![alt text](https://github.com/saptarshi3112/mean-todo/blob/master/Documentation/screenshots/accoutcreated.png)
-
-HOME PAGE:
-![alt text](https://github.com/saptarshi3112/mean-todo/blob/master/Documentation/screenshots/homepage.png)
-
-TASK SAVED:
-![alt text](https://github.com/saptarshi3112/mean-todo/blob/master/Documentation/screenshots/tasksaved.png)
